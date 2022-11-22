@@ -66,9 +66,14 @@ def run_stat_analysis(L, bin, pn, olog, fc=1.5, pvalue=0.05):
             #绘制堆叠图
             olog.write("Rscript {}/drawStackedBar.R {} {} {} {}\n".format(bin, infile, pn + '/infile.csv', groupfile, pn + '/' + comp))
             os.system("Rscript {}/drawStackedBar.R {} {} {} {}".format(bin, infile, pn + '/infile.csv', groupfile, pn + '/' + comp))
-            #绘制
+
+            #绘制errorBar图
             olog.write("Rscript {}/drawerrorBar.R {} {}/test.txt {} {}\n".format(bin, pn + '/infile.csv', of, groupfile, of))
             os.system("Rscript {}/drawerrorBar.R {} {}/test.txt {} {}".format(bin,  pn + '/infile.csv', of, groupfile, of))
+
+            #绘制分组heatmap图
+            olog.write("Rscript {}/drawHeatmapHistone.R {} {} {}\n".format(bin, infile, groupfile, of))
+            os.system("Rscript {}/drawHeatmapHistone.R {} {} {}".format(bin,  infile, groupfile, of))
 
 
 
